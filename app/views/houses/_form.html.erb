@@ -1,0 +1,58 @@
+<%= form_with(model: house, local: true) do |form| %>
+  <% if house.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(house.errors.count, "error") %> prohibited this house from being saved:</h2>
+
+      <ul>
+      <% house.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name ,"物件名" %>
+    <%= form.text_field :name%>
+  </div>
+
+  <div>
+    <%= form.label :rent ,"賃料" %>
+    <%= form.number_field :rent %>
+  </div>
+
+  <div>
+    <%= form.label :address　,"住所" %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div>
+    <%= form.label :age　,"築年数" %>
+    <%= form.number_field :age %>
+  </div>
+
+  <div>
+    <%= form.label :memo ,"備考" %>
+    <%= form.text_field :memo %>
+  </div>
+
+  <hr>
+
+  <h1>最寄駅登録</h1>
+
+  <%= form.fields_for :station do |station| %>
+    <%= station.index %>
+    <%= station.label :line_name ,"路線名" %>
+    <%= station.text_field :line_name %>
+
+    <%= station.label :name ,"駅名" %>
+    <%= station.text_field :name %>
+
+    <%= station.label :walk_time ,"徒歩分数" %>
+    <%= station.number_field :walk_time %>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
