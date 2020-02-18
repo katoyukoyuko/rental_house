@@ -18,7 +18,7 @@
 
   <div>
     <%= form.label :rent ,"賃料" %>
-    <%= form.number_field :rent %>
+    <%= form.number_field :rent %>円
   </div>
 
   <div>
@@ -28,7 +28,7 @@
 
   <div>
     <%= form.label :age　,"築年数" %>
-    <%= form.number_field :age %>
+    <%= form.number_field :age %>年
   </div>
 
   <div>
@@ -40,16 +40,24 @@
 
   <h1>最寄駅登録</h1>
 
-  <%= form.fields_for :station do |station| %>
-    <%= station.index %>
+  <%= form.fields_for :stations do |station| %>
+    <h3>最寄駅 <%= station.index + 1 %></h3>
+
+    <div>
     <%= station.label :line_name ,"路線名" %>
     <%= station.text_field :line_name %>
+    </div>
 
+    <div>
     <%= station.label :name ,"駅名" %>
     <%= station.text_field :name %>
+    </div>
 
+    <div>
     <%= station.label :walk_time ,"徒歩分数" %>
-    <%= station.number_field :walk_time %>
+    <%= station.number_field :walk_time %>分
+    </div>
+
   <% end %>
 
   <div class="actions">

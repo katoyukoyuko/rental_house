@@ -1,4 +1,52 @@
 <p id="notice"><%= notice %></p>
 
+<h1>House : <%= @house.name %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>物件名</th>
+      <th>賃料</th>
+      <th>住所</th>
+      <th>築年数</th>
+      <th>備考</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= @house.name %></td>
+        <td><%= @house.rent %></td>
+        <td><%= @house.address %></td>
+        <td><%= @house.age %></td>
+        <td><%= @house.memo %></td>
+      </tr>
+  </tbody>
+</table>
+
+<h1>最寄駅</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>番号</th>
+      <th>路線名</th>
+      <th>駅名</th>
+      <th>徒歩分数</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <% @house.stations.each do |station| %>
+      <tr>
+        <td><%= station.line_name %></td>
+        <td><%= station.name %></td>
+        <td><%= station.walk_time %></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+
+
 <%= link_to 'Edit', edit_house_path(@house) %> |
 <%= link_to 'Back', houses_path %>
